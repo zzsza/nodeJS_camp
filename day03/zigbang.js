@@ -23,16 +23,22 @@ function getRoomInformation(roomId){
         });
 
         response.on("end", function(){
-            var jsonData = JSON.parse(data);
-            // console.log(data);
 
-            var roomInformation = jsonData.items[0].item;
+            try {
+                var jsonData = JSON.parse(data);
+                // console.log(data);
 
-            var deposit = roomInformation.deposit;
-            var rent = roomInformation.rent;
+                var roomInformation = jsonData.items[0].item;
 
-            console.log(deposit);
-            console.log(rent);
+                var deposit = roomInformation.deposit;
+                var rent = roomInformation.rent;
+
+                console.log(deposit);
+                console.log(rent);
+            } catch (error){
+                console.log(error.message);
+            }
+
         });
     });
 }
@@ -42,7 +48,9 @@ getRoomInformation(6360659);
 var roomIds = process.argv.slice(2);
 // 리스트 형태로 들어가게 됨
 
-roomIds.forEach(function(roomId){
-    getRoomInformation(roomId);
-});
+// roomIds.forEach(function(roomId){
+//     getRoomInformation(roomId);
+// });
 
+roodIds.forEach(getRoomInformation);
+// 콜백 함수를 한줄로 표현! ( 리팩토링 )
