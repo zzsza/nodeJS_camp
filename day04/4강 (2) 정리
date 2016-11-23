@@ -1,0 +1,80 @@
+npm, package json을 이용한 node 모듈 관리
+<목표>
+1. Node.js에서 다른사람들이 만들어준 패키지(라이브러리)를 사용하는 방법 - NPM
+2. Node.js에서 문제를 쉽게 발견하고, 디버깅 하는 방법
+
+www.npmjs.com
+1. 웹 클라이언트 라이브러리 다운시 - bootstrap, jquery
+- 여태까지는 CDN을 복사해서 사용했었음. 이젠 npm을 통해 한번에 해결!
+2. 노드 라이브러리 다운시 사용
+
+npm install bootstrap3
+npm install jquery
+
+jquery / jQuery 두개가 있는 경우 선택의 기준은 별표가 많은 것이.. 더.. 좋을걸?
+npm install bootstrap3@3.3.6 해당 버젼
+
+npm init - npm 초기화!
+ => package.json 파일이 생길거임
+
+ npm install : 현재 폴더에 있는 package.json을 읽어가며 의존성 관련 라이브러리를 자동으로 설치
+
+ 다운로드 순간에 package.json에 추가하는 방법
+ npm install express --save => 알아서 express 버전까지 명시해줌
+
+express 사용-!
+★app.js
+
+var http = require("http"); # 내장 모듈
+var express = require("express") # npm을 통해 다운받은 모듈
+# node_module에 들어있으면 앞부분을 생략하고 써도 가능
+
+http.createServer의 경우 함수 안에 if로 라우터 처리를 했으나, express는 더 쉽게함
+
+var app = express();
+app.get("/", function(request, response){
+response.send("hello world");
+})
+app.get("/:roomId", function(request, response{
+    response.send(request.params.roomId);
+});
+app.listen(3000);
+
+express는 우리가 만들지 않은 친구에 대해 모두 예외처리를 해줌
+
+nodemon
+- 코드가 바뀌면 재실행을 해주면 좋겠다
+- 껏다 키는거 넘나 귀찮음
+- 코드에 오타가 있으면 문제를 알려주며 서버를 끄진 않음!
+  문제를 고치면 재실행됨
+
+nodemon app.js
+
+npm install nodemon
+-> node_modules로 들어감
+-> 파일을 통해 읽을 수 있음
+실행가능한 형태의 파일로 전역(global) 설치..!
+-g 를 추가하면 됨
+
+npm install nodemon -g
+
+var express = require("express");
+
+var app = express();
+
+app.get("/", function(request, response){
+    response.send("hello world");
+})
+app.get("/:roomId", funtion(request, response){
+    response.send(request.params.roomId);
+});
+app.listen(3000);
+
+params가 궁금할 경우 디버깅을 어떻게 해야할까?
+nodemon app.js --debug
+npm install -g node-inspector # 디버깅을 위한 노드몬같은 친구
+
+node-inspector 라고하면 창이 하나 뜰거임
+이미 띄운 노드 서버랑 연동이 됨
+// 다음 시간에 계속~
+node js를 이용한 직방 왓챠 개발 연습하기!
