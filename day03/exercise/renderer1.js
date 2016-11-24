@@ -13,7 +13,7 @@ function render(teamplateName, response){
     var mainContent = fs.readFileSync("./templates/" + templateName + ".html", "utf8");
 
     baseContent = baseContent.replace("$ HEADER $", headerContent);
-    baseContent = baseContent.replace("$ FOOTER $", footeContent);
+    baseContent = baseContent.replace("$ FOOTER $", footerContent);
     baseContent = baseContent.replace("$ CONTENT $", mainContent);
 
     response.write(baseContent);
@@ -21,4 +21,4 @@ function render(teamplateName, response){
 
 }
 
-module.exports
+module.exports.render = render;
