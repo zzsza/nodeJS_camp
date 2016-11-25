@@ -6,7 +6,7 @@ var http = require("http");
 var router = require("./router.js");
 
 // router.home / router.room으로 부를 수 있음
-
+dk
 // router 유저가 request 보내는 주소에 따라 다른 작업을..!!
 
 var app = http.createServer(function(request, response){

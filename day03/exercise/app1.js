@@ -11,7 +11,7 @@ var app = http.createServer(function(request, response){
 
     router.home(request, response);
     router.room(request, response);
-})
+});
 
 app.listen(3002);
 
