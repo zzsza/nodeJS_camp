@@ -6,15 +6,12 @@
 
 
 var path = require("path");
-
 var express = require("express");
 
 var app = express();
-
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname + "/views"));
 // path설정을 해줘야합니다..! 실행중인 파일의 디렉토리에 있는 views 폴더를 뜻함
-
 
 // 설정을 바꿀 경우 app.set을 사용
 // views라는 곳에 html을 저장함
@@ -35,7 +32,7 @@ app.get("/:roomId", function(request, response){ // 보통 /rooms/:roomId 로 �
 // :(세미 콜론)이 있어야 변수로 인식
  
 app.listen(3000, function(){
-    console.log("Server is  listening on localhost:3000")
+    console.log("Server is  listening on localhost:3000");
     // 성공할 시 실행할 롤백함수까지 정의
 });
 
