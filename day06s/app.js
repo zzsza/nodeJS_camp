@@ -33,9 +33,22 @@ app.get("/", function(request, response) {
             var apiJsonData = JSON.parse(apiData);
             var news = apiJsonData.news;
 
+            var matchedNews = [];
+
+            if (search){
+                news.forEach(function(newsInformation){
+                   if (newsInformation.title.indexOf(search) > -1) {
+                       matchedNews.push(newsInformation);
+                   }
+                });
+            }
+            else {
+                matchedNews = news;
+            }
+
             return response.render(
                 "home",
-                {news: news, search: search}
+                {news: matchedNews, search: search}
             );
         });
     });
