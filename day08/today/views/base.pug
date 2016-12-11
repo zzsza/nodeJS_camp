@@ -1,0 +1,14 @@
+doctype html
+
+html
+    head
+        title NodeCamp
+        include ./partials/stylesheets
+        include ./partials/javascripts
+
+    body
+        include ./partials/header
+        block content
+        include ./partials/footer
+
+// body 에 css 넣으면 먼저 컨텐츠를 보여주는 것!
