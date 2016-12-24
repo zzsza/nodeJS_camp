@@ -5,8 +5,7 @@
 var express = require("express");
 var path = require("path");
 var mongoose = require("mongoose");
-var bodyParser = require("body-parser");
-
+var bodyParser = require('body-parser');
 
 var homeRoute = require("./routes/home");
 var postsRoute = require("./routes/posts");
@@ -34,7 +33,7 @@ app.use("/", homeRoute);
 app.use("/posts", postsRoute);
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.listen(3000, function(){
